@@ -18,7 +18,7 @@ void setup()
   surface.setResizable(true);
   delay(100);
   
-  String portName = Serial.list()[1];
+  String portName = Serial.list()[2];
   myPort = new Serial(this, portName, 9600);
 }
 
@@ -46,14 +46,13 @@ void draw()
   println(analogValue);
   fill(analogValue); //this sets the fill value to change
   noStroke();
-  sphere(height/6);
- 
+  sphere(height/4);
   fill(255);
   if (analogValue<=8)
   {
-    text("Finger is touching the Sensor.", width/5, 0);
+    text("Touch Detected.", width/5, 0);
   }
-
+  textSize(18);
   text("Current Value: " + analogValue, width/5, 50);
 
   popMatrix();
