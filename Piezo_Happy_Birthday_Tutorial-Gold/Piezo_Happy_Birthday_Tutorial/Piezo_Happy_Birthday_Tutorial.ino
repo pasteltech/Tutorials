@@ -37,7 +37,7 @@ void loop() {
   {
     hertz = a[count];
     noTone(buzzer);
-    delay(50);
+    delay(150);
     tone(buzzer, hertz);
     delay(wait);
   }
