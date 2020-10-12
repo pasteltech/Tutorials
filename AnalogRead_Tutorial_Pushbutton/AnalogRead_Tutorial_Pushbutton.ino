@@ -17,8 +17,8 @@ void loop () {
   else if (z > 817 && z < 822) button = 4;             
   else if (z > 851 && z < 856) button = 5; 
   //else if (z > 875 && z < 880) button = 6;
-  else button = 0;                                                      
-
+  else button = 6;                                                      
+  
   if (old_button == button) {                                           
     old_button = button;                                              
     pressed_button = 0;                                               
@@ -28,5 +28,8 @@ void loop () {
     old_button = button;                                             
     pressed_button = button;                                        
   }
-  Serial.println(pressed_button);
+  Serial.print("Button pushed = ");
+  Serial.println(z);
+; 
+  delay(500);
 }
