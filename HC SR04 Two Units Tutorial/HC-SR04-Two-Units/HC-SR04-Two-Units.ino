@@ -14,8 +14,8 @@ int distanceLeft;
 int distanceRight;
 
 
-//This sets the samples to average
-int samples;
+//This sets the samples to average, originally set to 10
+int samples = 10;
 
 
 
@@ -36,7 +36,7 @@ void setup()
 void loop() {
 
   distanceLeft = (sonicSensor(10, 11));
-  delay(33);
+  delay(50);
   distanceRight = (sonicSensor(6, 7));
 
 
@@ -50,22 +50,27 @@ void loop() {
 }
 int sonicSensor(int trigPin, int echoPin)
 {
+  int distSum;
   int duration;
-  
-  int samples = 1;
+  int dAverage = 0;
+  int distance;
   for (int i = 0; i < samples; i++)
   {
     digitalWrite(trigPin, LOW);
-    delayMicroseconds(5);
+    delayMicroseconds(2);
     digitalWrite(trigPin, HIGH);
     delayMicroseconds(10);
     digitalWrite(trigPin, LOW);
 
-    pinMode(echoPin, INPUT);
-    duration+= pulseIn(echoPin, HIGH, 10000);
+    duration= pulseIn(echoPin, HIGH, echoTime);
+    distance = (duration/2)/29.1;
+    distSum+= distance;
+    delay(2);
+
   }
 
+  dAverage = distSum/samples;
 
 
-  return (duration / (2*samples) / 29.1);
+  return dAverage;
 }
