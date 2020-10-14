@@ -1,12 +1,11 @@
-
-
+//Code verified 10/11/2020
 
 const int trigPinLeft = 10;
 const int echoPinLeft = 11;
 const int trigPinRight = 6;
 const int echoPinRight = 7;
 
-const int echoTime = 7000; //If the Servo isn't working well this is most likely where the error is. 
+const int echoTime = 7000; //If the Servo isn't working well this is most likely where the error is.
 
 int durationLeft;
 int durationRight;
@@ -14,95 +13,59 @@ int durationRight;
 int distanceLeft;
 int distanceRight;
 
-void setup() 
+
+//This sets the samples to average
+int samples;
+
+
+
+void setup()
 {
-  pinMode(trigPinLeft,OUTPUT);
-  pinMode(echoPinLeft,INPUT);
+  pinMode(trigPinLeft, OUTPUT);
+  pinMode(echoPinLeft, INPUT);
 
   pinMode(trigPinRight, OUTPUT);
   pinMode(echoPinRight, INPUT);
-  
-  Serial.begin(9600);
+
+  Serial.begin(115200);
 
 }
 
+
+//Here we find the distance measurement in centimeters measured by the Ping Sensors
 void loop() {
-     // Serial.println(trigPinLeft);
-   // Serial.println(trighPinLeft + " " + echoPrinRight);
-  /*
 
-  digitalWrite (trigPinLeft, LOW);
-  digitalWrite(trigPinRight,LOW);
-  delayMicroseconds(2);
+  distanceLeft = (sonicSensor(10, 11));
+  delay(33);
+  distanceRight = (sonicSensor(6, 7));
 
-  digitalWrite(trigPinLeft, HIGH);
-  digitalWrite(trigPinRight,HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPinLeft,LOW);
-  digitalWrite(trigPinRight,LOW);
-  durationLeft = pulseIn(echoPinLeft,HIGH,7000);
-  durationRight = pulseIn(echoPinRight,HIGH,7000);
-  Serial.println(durationLeft);
-  Serial.println(durationRight);
-  distanceLeft = durationLeft*.034/
-  Serial.println(distanceLeft);
-  distanceRight = durationRight*(.034/2);
-  
-  Serial.print("Distance Left = ");
+
   Serial.print(distanceLeft);
-  Serial.print("    Distance Right = ");
-  Serial.print(distanceRight);
-  */
-  //Serial.print("Distance Right = ");
-  Serial.print(sonicSensor(6,7));
   Serial.print(" ");
-  //Serial.print("    Distance Left = ");
-  Serial.println(sonicSensor(10,11));
-  delay(10);
-  
-  
-  delay(500);
-  
+  Serial.print(distanceRight);
+  Serial.println(" ");
 
+  delay(200);
 
-  
-  
 }
 int sonicSensor(int trigPin, int echoPin)
 {
-
+  int duration;
+  
+  int samples = 1;
+  for (int i = 0; i < samples; i++)
+  {
     digitalWrite(trigPin, LOW);
-    delayMicroseconds(2);
-    digitalWrite(trigPin,HIGH);
+    delayMicroseconds(5);
+    digitalWrite(trigPin, HIGH);
     delayMicroseconds(10);
-    digitalWrite(trigPin,LOW);
-    int duration = pulseIn(echoPin,HIGH,7000);
-    //int distance = (duration/2)/29.1;
-    return (duration/2)/29.1;
+    digitalWrite(trigPin, LOW);
+
+    pinMode(echoPin, INPUT);
+    duration+= pulseIn(echoPin, HIGH, 10000);
+  }
+
+
+
+  return (duration / (2*samples) / 29.1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
