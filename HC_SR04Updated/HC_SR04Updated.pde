@@ -82,7 +82,6 @@ void drawRectangles()
     rect(spacing, height, 50, -dHeight);
     textSize(32);
     text(values[i], spacing-(50), height);
-    // println( "Spacing = " +values[i] + " " + scale);
 
     spacing = spacing + spacing;
   }

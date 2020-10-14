@@ -7,15 +7,12 @@ const int echoPinRight = 7;
 
 const int echoTime = 7000; //If the Servo isn't working well this is most likely where the error is.
 
-int durationLeft;
-int durationRight;
-
 int distanceLeft;
 int distanceRight;
 
 
-//This sets the samples to average, originally set to 10
-int samples = 10;
+//This sets the samples to average, originally set to 20
+int samples = 20;
 
 
 
@@ -35,9 +32,9 @@ void setup()
 //Here we find the distance measurement in centimeters measured by the Ping Sensors
 void loop() {
 
-  distanceLeft = (sonicSensor(10, 11));
-  delay(50);
-  distanceRight = (sonicSensor(6, 7));
+  distanceLeft = (sonicSensor(trigPinLeft, echoPinLeft));
+  delay(33);
+  distanceRight = (sonicSensor(trigPinRight, echoPinRight));
 
 
   Serial.print(distanceLeft);
