@@ -41,9 +41,7 @@ void setup()
 //Here we find the distance measurement in centimeters measured by the Ping Sensors
 void loop() {
   distance1 = (sonicSensor(trigPin1, echoPin1));
-  
   distance2 = (sonicSensor(trigPin2, echoPin2));
-  //delay(50); //Adding this line causes issues to the program. 
   distance3 = (sonicSensor(trigPin3, echoPin3));
 
   
