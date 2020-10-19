@@ -22,8 +22,7 @@ void setup() {
 }
 void loop()
 {
-  
- // lcd.print("hello son");
+ 
    long duration, distance;
   digitalWrite(trigPin, LOW);  // Added this line
   delayMicroseconds(2); // Added this line
@@ -42,12 +41,6 @@ void loop()
   delay(1000);
   lcd.clear();
   
-  //lcd.clear();
   
-  //delay(1000);
-  //lcd.print("Hello Worldkl;kljklj"); 
-  //delay(1000);
- // lcd.clear();
   
 }
-
