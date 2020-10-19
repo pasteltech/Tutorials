@@ -11,11 +11,16 @@ void setup()
   pinMode(13, OUTPUT); //Initiates Motor Channel B pin
   pinMode(8, OUTPUT);  //Initiates Brake Channel B pin
 
+
+  Serial.begin(9600);
+
 }
 
 void loop()
 {
 
+
+ Serial.print("255");
   //forward direction motor a
   digitalWrite(13, HIGH);
   digitalWrite(8, LOW);
