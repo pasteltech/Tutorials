@@ -1,6 +1,6 @@
 /*
- * Code for Arduino Processing 3U-Ping Sensor
- */
+   Code for Arduino Processing 3U-Ping Sensor
+*/
 
 //Each set of echo and trig pins corresponds to an HC-SR04 Sensor
 const int echoPin1 = 13;
@@ -13,12 +13,12 @@ const int trigPin3 = 8;
 
 
 //The amount of time the system waits for an echo response
-const int echoTime = 7000; 
+const int echoTime = 7000;
 
 //Used to store the measurements from each sensor
-int distance1=0;
-int distance2=0;
-int distance3=0;
+int distance1 = 0;
+int distance2 = 0;
+int distance3 = 0;
 
 
 //This sets the samples to average, originally set to 20
@@ -27,13 +27,13 @@ const int samples = 40;
 
 void setup()
 {
-  
+
 
   pinMode(trigPin1, OUTPUT);
   pinMode(echoPin1, INPUT);
 
-  pinMode(trigPin2,OUTPUT);
-  pinMode(echoPin2,INPUT);
+  pinMode(trigPin2, OUTPUT);
+  pinMode(echoPin2, INPUT);
 
   pinMode(trigPin3, OUTPUT);
   pinMode(echoPin3, INPUT);
@@ -82,13 +82,13 @@ int sonicSensor(int trigPin, int echoPin)
     delayMicroseconds(10);
     digitalWrite(trigPin, LOW);
 
-    duration= pulseIn(echoPin, HIGH, echoTime);
-    distance = (duration/2)/29.1;
-    distSum+= distance;
+    duration = pulseIn(echoPin, HIGH, echoTime);
+    distance = (duration / 2) / 29.1;
+    distSum += distance;
 
   }
 
-  dAverage = distSum/samples;
+  dAverage = distSum / samples;
 
 
   return dAverage;
